@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="./sdk/resources/css/sencha-touch.css">
+		<script type="text/javascript" src="./sdk/sencha-touch.js"></script>
+		
+<script type="text/javascript">
+			Ext.Loader.setConfig({ enabled: true });
+			Ext.application({
+				name: "MyApp",
+				'Ext.MessageBox',''Ext.dataview.List', 'Ext.List'
+				requires: ['Ext.dataview.List', 'Ext.List'],
+				launch: function() {
+					var list = Ext.create('Ext.List', {
+    store: {
+        fields: ['name'],
+        data: [
+            {name: 'Cowper'},
+            {name: 'Everett'},
+            {name: 'University'},
+            {name: 'Forest'}
+        ]
+    },
+
+    itemTpl: '{name}'
+});
+//This will just render one DataItem for each item in the Store. You can also attach listeners to events on the List,
+
+Ext.create('Ext.List', {
+    listeners: {
+        select: function(view, record) {
+            Ext.Msg.alert('Selected!', 'You selected ' + record.get('name'));
+        }
+    },
+
+    //store and itemConfig as before
+});
+Ext.Viewport.add(list);
+				}
+			});
+</script>
+</head>
+<body>
+</body>
+</html>
